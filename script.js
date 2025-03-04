@@ -5,7 +5,7 @@ const taskList = document.getElementById("task-list");
 submitBtn.addEventListener("click", () => {
     const taskInput = userInput.value.trim();
 
-    if (userInput.value === ""){
+    if (!userInput.value){
         alert("Please input a value");
         return;
     }
