@@ -1,2 +1,2 @@
-# TODO APP TEST
- This is the assessment project I did to finish up JAVASCRIPT
+# ToDo App
+This is the repository for my todo app which i built with html css javascript
