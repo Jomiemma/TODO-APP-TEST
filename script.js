@@ -1,7 +1,8 @@
+// crreating variables with appropriate id's
 const userInput = document.getElementById("user-input");
 const submitBtn = document.getElementById("submit-btn");
 const taskList = document.getElementById("task-list");
-
+// event-listener
 submitBtn.addEventListener("click", () => {
     const taskInput = userInput.value.trim();
 
@@ -9,6 +10,7 @@ submitBtn.addEventListener("click", () => {
         alert("Please input a value");
         return;
     }
+    // creating label elements
     
     const task = document.createElement("div");
     task.classList.add("task");
