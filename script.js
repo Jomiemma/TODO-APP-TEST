@@ -24,9 +24,45 @@ submitBtn.addEventListener("click", () => {
     label.classList.toggle("completed", checkbox.checked);  
     })
 
-    task.appendChild(checkbox);
-    task.appendChild(label);
-    taskList.appendChild(task);
+        //create edit button
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "✏️";
 
-    userInput.value = "";
-})
+        editBtn.addEventListener("click", () => {
+            const textInput = document.createElement("input");
+            textInput.type = "text";
+            textInput.value = label.textContent;
+            textInput.classList.add("task-input");
+
+            task.replaceChild(textInput, label); //swap label with input field
+            textInput.focus(); //focus input immediately
+
+            const saveEdit = () => {
+                if (textInput.value.trim() !== "") {
+                    label.textContent = textInput.value.trim(); //save edited text
+                }
+                task.replaceChild(label, textInput); //swap back to label
+            };
+
+            textInput.addEventListener("blur", saveEdit); //save when input loses focus
+               textInput.addEventListener("keypress", (e) => {
+                 if (e.key === "Enter") {
+                    saveEdit(); //Save on Enter key
+                }})
+        })
+        
+        //create delete button
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "❌";
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.addEventListener("click", () => {
+            taskList.removeChild(task); //Remove task from the list
+        });
+        
+        task.appendChild(checkbox);
+        task.appendChild(label);
+        task.appendChild(editBtn);
+        task.appendChild(deleteBtn);
+        taskList.appendChild(task);
+        userInput.value = "";
+    })
